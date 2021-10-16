@@ -20,7 +20,7 @@ for (i in 1:length(my_packages)){
 os <- import("os")
 use_python("/usr/local/bin/python3")
 
-my_python_packages = c("smtplib", "tgtg", "emails")
+my_python_packages = c("smtplib", "tgtg", "emails", "schedule")
 
 for (i in my_python_packages) {
   
@@ -40,7 +40,7 @@ rm(my_packages, my_python_packages, i)
 
 ## 1.3 Load the required functions ====
 
-source("R/get_t_current.R")
+source("/../R/get_t_current.R")
 source("R/sending_email.R")
 
 
@@ -55,10 +55,8 @@ augen = c("Geschmackslokal", "Café Goldkind", "Franz",
 
 client = tgtg$TgtgClient(email="k.lichtsteiner@hotmail.com", password="a782nlfsklFFF!!.fsdfsd")
 
-t_current = get_t_current(client, augen)
-
-if (is.null(t_current) == F) {
-  sending_email(t_current, "kaspar.lichtsteiner@inscreen.ch")
-}
-
-
+while (TRUE == TRUE) {
+  t_current = get_t_current(client, augen)
+  print(t_current)
+  Sys.sleep(10)
+}                             
