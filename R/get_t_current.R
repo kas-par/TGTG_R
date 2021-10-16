@@ -1,4 +1,4 @@
-get_t_current <- function(client = client, augen = augen) {
+get_t_current <- function(client = client, augen = augen, emails) {
   
   #source("R/sending_email.R")
   
@@ -67,7 +67,7 @@ get_t_current <- function(client = client, augen = augen) {
   }
   
   if (is.null(t_current) == F) {
-    sending_email(t_current, "kaspar.lichtsteiner@inscreen.ch")
+    sending_email(t_current, emails)
   } else {
     print("Nichts Neues vorhanden.")
   }

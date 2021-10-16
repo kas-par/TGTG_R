@@ -53,6 +53,8 @@ augen = c("Globus ★★★delicatessa - St. Gallen", "Café Goldkind", "Franz",
           "tibits - St. Gallen  (vegan)", "tibits - St. Gallen  (vegetarisch)",
           "MÜLLER Reformhaus - St Gallen")
 
+emails = c("kaspar.lichtsteiner@inscreen.ch","jacqueline.senfft@gmail.com")
+
 
 # 3. Set up TGTG client, load newest data and set the offers by email ----
 
@@ -62,7 +64,7 @@ client = tgtg$TgtgClient(email="k.lichtsteiner@hotmail.com", password="a782nlfsk
 
 
 while (TRUE == TRUE) {
-  t_current = get_t_current(client, augen)
+  t_current = get_t_current(client, augen, emails = emails)
   print(t_current)
   Sys.sleep(300)
 }                             

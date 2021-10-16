@@ -39,7 +39,7 @@ sending_email <- function(t_current, to_mail){
     select(-Zeit) %>% 
     htmlTable()
   
-  message = sendingMail(subject = s_temp, body = body, From = gmail_user, to = to_mail)
+  message = sendingMail(subject = s_temp, body = body, From = gmail_user, to = to_mail[1])
   
   smtpObj = smtplib$SMTP_SSL('smtp.gmail.com', port = "465")
   smtpObj$ehlo()
