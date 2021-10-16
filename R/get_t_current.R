@@ -15,7 +15,8 @@ get_t_current <- function(client = client, augen = augen) {
   if (class(temp_table) == "try-error"){
     db <- dbConnect(RSQLite::SQLite(), sqlitePath) #establish connection
     print("first time database created")
-    t_food = tibble(Name = "test", Datum = "", Zeit = "", Anzahl = 0)
+    t_food = tibble(Name = NA_character_, Datum = NA_character_, Zeit = NA_character_, 
+                    Anzahl = NA_real_)
     dbWriteTable(db, "Food", t_food)
     print("Table initialisiert")
     dbDisconnect(db)

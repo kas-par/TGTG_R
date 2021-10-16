@@ -6,7 +6,7 @@
 
 ## 1.1 Load the required R packages ====
 
-my_packages <- c("reticulate", "RSQLite", "tidyverse")
+my_packages <- c("reticulate", "RSQLite", "tidyverse", "htmlTable")
 
 for (i in 1:length(my_packages)){
   if(!require(my_packages[i], character.only = TRUE)){

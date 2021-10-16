@@ -6,8 +6,7 @@ def sendingMail (subject, body, From, to):
   msg["Subject"] = subject
   msg["From"] = From
   msg["To"] = to
-  part1 = MIMEText(body,
-                 "plain", "utf-8")
+  part1 = MIMEText(body,"html")
   msg.attach(part1)
   return(msg)
 

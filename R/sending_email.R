@@ -32,7 +32,14 @@ sending_email <- function(t_current, to_mail){
   # in TGTG-Response are encoded correctly
   
   source_python('R/sendingMail.py')
-  message = sendingMail(subject = s_temp, body = "", From = gmail_user, to = to_mail)
+  
+  # create a html table of the body
+  
+  body = t_current %>% 
+    select(-Zeit) %>% 
+    htmlTable()
+  
+  message = sendingMail(subject = s_temp, body = body, From = gmail_user, to = to_mail)
   
   smtpObj = smtplib$SMTP_SSL('smtp.gmail.com', port = "465")
   smtpObj$ehlo()
