@@ -1,10 +1,6 @@
-
-
-
-
 get_t_current <- function(client = client, augen = augen) {
   
-  source("R/sending_email.R")
+  #source("R/sending_email.R")
   
   # 1. Set up the DB connection details
   
@@ -38,7 +34,8 @@ get_t_current <- function(client = client, augen = augen) {
     latitude=47.42391, #St. Galler Koordinaten
     longitude=9.37477,
     radius = 100,
-    with_stock_only = TRUE
+    with_stock_only = T,
+    page_size  = 100
   )
   
   t_current = tibble(Name = rep(NA, length(t_newest_tgtg_data)), Datum = Sys.Date(), 
@@ -57,6 +54,7 @@ get_t_current <- function(client = client, augen = augen) {
     anti_join(t_food, by="Name") %>%  #check if already in the database
     mutate(Datum = as.character(Datum),
            Zeit = as.character(Zeit))
+  
   
   if (nrow(t_current)>0){
     db <- dbConnect(RSQLite::SQLite(), sqlitePath) #establish connection
